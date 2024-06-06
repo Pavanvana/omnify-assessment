@@ -1,0 +1,6 @@
+export enum sideBarNavItemsTypes {
+  ORDERS = "ORDERS",
+  SUBSCRIPTIONS = "SUBSCRIPTIONS",
+  CALENDAR = "CALENDAR",
+  WAITLIST = "WAITLIST",
+}

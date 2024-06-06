@@ -1,0 +1,5 @@
+export enum sidePaneTypes {
+  SCHEDULED_DATE = "SCHEDULED_DATE",
+  PEOPLE = "PEOPLE",
+  SERVICES_PRODUCTS = "SERVICES_PRODUCTS",
+}
