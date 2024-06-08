@@ -5,7 +5,7 @@ export const locationNameInputClass =
   "p-[8px_12px_8px_12px] w-full border-none h-[36px] outline-none";
 
 export const locationNameContainerClass =
-  "flex items-center justify-between rounded-[6px] border-b border-solid border-[#E2E8F0] bg-[#FFF] shadow-custom focus-within:ring-2 focus-within:ring-blue-100";
+  "flex items-center justify-between rounded-[6px] border-b border-solid border-[#E2E8F0] bg-[#FFF] shadow-custom focus-within:ring-2 focus-within:ring-blue-100 h-[38px]";
 
 export const dateTimeContainerClass =
   "w-[193px] h-[54px] p-[0px_12px_6px_12px] rounded-[4px] bg-[#F1F5F9]";

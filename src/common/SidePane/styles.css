@@ -1,0 +1,56 @@
+.my-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45 0 0 / 0.3);
+  backdrop-filter: blur(10px);
+
+  &[data-entering] {
+    animation: mymodal-blur 300ms reverse ease-in;
+  }
+
+  &[data-exiting] {
+    animation: mymodal-blur 300ms;
+  }
+}
+
+.my-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 230px;
+  background: #ffffff;
+  outline: none;
+  border-left: none;
+  box-shadow: -8px 0 20px rgba(0 0 0 / 0.1);
+
+  &[data-entering] {
+    animation: mymodal-slide 500ms reverse ease-in;
+  }
+
+  &[data-exiting] {
+    animation: mymodal-slide 500ms;
+  }
+}
+
+@keyframes mymodal-blur {
+  from {
+    background: rgba(45 0 0 / 0);
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    background: rgba(45 0 0 / 0.3);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes mymodal-slide {
+  from {
+    transform: translateX(230px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
