@@ -26,12 +26,12 @@ const Home = (): React.ReactElement => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex bg-[#F8FAFC] w-full">
       <SideBar
         activeNavItem={activeNavItem}
         setActiveNavItem={setActiveNavItem}
       />
-      {renderBody()}
+      <div className="w-full h-full p-[10px]">{renderBody()}</div>
     </div>
   );
 };
