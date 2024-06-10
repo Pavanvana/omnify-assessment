@@ -21,7 +21,7 @@ export const searchInputFieldClass =
   "border-none text-[12px] font-medium outline-none text-[#94A3B8] w-full";
 
 export const filterContainerClass =
-  "flex items-center gap-[6px] rounded-[6px] bg-[#F1F5F9] p-[6px_12px_6px_12px]";
+  "flex items-center gap-[6px] rounded-[6px] bg-[#F1F5F9] p-[6px_12px_6px_12px] cursor-pointer hover:bg-gray-200";
 
 export const filterTextClass =
   "font-sans font-medium text-[12px] text-[#334155]";
@@ -39,3 +39,6 @@ export const paginationNumberButtonClass =
 
 export const paginationNumberClass =
   "font-sans font-medium text-[14px] text-[#334155]";
+
+export const FilterPopOverContainerClass =
+  "w-[612px] h-[400px] bg-white rounded-[6px] shadow-custom-sm";
