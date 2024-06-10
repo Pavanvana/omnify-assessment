@@ -33,7 +33,7 @@ const SearchField = (props: Props): React.ReactElement => {
   } = props;
   return (
     <div className={cn(className, "flex flex-col")}>
-      <label className={labelClass}>{label}</label>
+      {label && <label className={labelClass}>{label}</label>}
       <input
         type="search"
         value={value}
@@ -44,7 +44,7 @@ const SearchField = (props: Props): React.ReactElement => {
         onFocus={onFocus}
         autoFocus={autoFocus}
       />
-      <p className={errorMsgClass}>{errorMsg}</p>
+      {errorMsg && <p className={errorMsgClass}>{errorMsg}</p>}
     </div>
   );
 };

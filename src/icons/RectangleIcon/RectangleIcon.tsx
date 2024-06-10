@@ -1,5 +1,6 @@
 import * as React from "react";
 import { IconProps } from "@/types/iconTypes";
+
 const RectangleIcon = (props: IconProps) => {
   const { height = 22, width = 22, ...rest } = props;
   return (

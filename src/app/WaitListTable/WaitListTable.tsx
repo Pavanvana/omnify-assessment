@@ -1,9 +1,11 @@
-import { useMemo, useState } from "react";
 import cn from "classnames";
+import { useMemo, useState } from "react";
+
 import Table from "@/common/Table/Table";
 import { WaitListStatusTypes } from "@/types/tableTypes";
 import { getWaitListEnum } from "@/utils/waitListUtils";
 import { tableDummyData } from "@/constants/tableConstants";
+import { CalenderIcon, CircleDotIcon, HashIcon, UserIcon } from "@/icons";
 
 import {
   leadStatusDotContainerClass,
@@ -95,7 +97,7 @@ const WaitListTable = (): React.ReactElement => {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[20px]">
             <input
-              className="w-[14px] h-[14px]"
+              className="w-[14px] h-[14px] cursor-pointer"
               type="checkbox"
               checked={checkedState.headerCheckbox}
               onChange={handleHeaderCheckboxChange}
@@ -107,7 +109,9 @@ const WaitListTable = (): React.ReactElement => {
       {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[14.5%]">
-            <p>icon</p>
+            <div>
+              <CalenderIcon />
+            </div>
             <p className={tableHeaderTextClass}>Created On</p>
           </div>
         ),
@@ -116,7 +120,9 @@ const WaitListTable = (): React.ReactElement => {
       {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[12.8%]">
-            <p>icon</p>
+            <div>
+              <UserIcon />
+            </div>
             <p className={tableHeaderTextClass}>Payer</p>
           </div>
         ),
@@ -125,7 +131,9 @@ const WaitListTable = (): React.ReactElement => {
       {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[11.5%]">
-            <p>icon</p>
+            <div>
+              <CircleDotIcon />
+            </div>
             <p className={tableHeaderTextClass}>Status</p>
           </div>
         ),
@@ -134,7 +142,9 @@ const WaitListTable = (): React.ReactElement => {
       {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[17%]">
-            <p>icon</p>
+            <div>
+              <HashIcon />
+            </div>
             <p className={tableHeaderTextClass}>Email</p>
           </div>
         ),
@@ -143,7 +153,9 @@ const WaitListTable = (): React.ReactElement => {
       {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[12.3%]">
-            <p>icon</p>
+            <div>
+              <HashIcon />
+            </div>
             <p className={tableHeaderTextClass}>Payer Phone</p>
           </div>
         ),
@@ -152,7 +164,9 @@ const WaitListTable = (): React.ReactElement => {
       {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[17%]">
-            <p>icon</p>
+            <div>
+              <HashIcon />
+            </div>
             <p className={tableHeaderTextClass}>Services</p>
           </div>
         ),
@@ -161,7 +175,9 @@ const WaitListTable = (): React.ReactElement => {
       {
         Header: () => (
           <div className="flex items-center gap-[6px] w-[14.4%]">
-            <p>icon</p>
+            <div>
+              <CalenderIcon />
+            </div>
             <p className={tableHeaderTextClass}>Scheduled</p>
           </div>
         ),
@@ -178,7 +194,7 @@ const WaitListTable = (): React.ReactElement => {
           <div className="flex items-center gap-[6px] w-[20px]">
             <input
               type="checkbox"
-              className="w-[14px] h-[14px]"
+              className="w-[14px] h-[14px] cursor-pointer"
               checked={checkedState.rowCheckboxes.includes(col.id)}
               onChange={handleRowCheckboxChange(col.id)}
             />

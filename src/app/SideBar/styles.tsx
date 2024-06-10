@@ -12,7 +12,7 @@ export const sideBarHeaderTitleClass =
 export const helpCenterAndProfileContainerClass = "w-full h-[126px] p-[8px]";
 
 export const profileContainerClass =
-  "p-[10px_8px_10px_8px] flex items-center gap-[2px] radius-[6px] bg-[#FFFFFF] shadow-custom";
+  "p-[10px_8px_10px_8px] flex items-center justify-between gap-[2px] rounded-[6px] bg-[#FFFFFF] shadow-custom";
 
 export const profileNameClass =
   "font-sans font-medium text-[12px] text-[#0F172A] truncate";

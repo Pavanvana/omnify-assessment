@@ -11,7 +11,7 @@ const ReactPopover: React.FC<ReactPopoverProps> = ({
   children,
   ...props
 }): ReactElement => (
-  <Popover offset={20} {...props}>
+  <Popover offset={20} placement="bottom right" {...props}>
     <Dialog className="outline-none shadow-lg rounded-[8px]">{children}</Dialog>
   </Popover>
 );

@@ -1,9 +1,24 @@
+"use client";
 import React, { useState } from "react";
+import { Button, DialogTrigger } from "react-aria-components";
 
 import SearchField from "@/common/SearchField/SearchField";
+import IconButton from "@/common/IconButton/IconButton";
+import ReactPopover from "@/common/ReactPopover/ReactPopover";
 import WaitListTable from "../WaitListTable/WaitListTable";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsUpDown,
+  ColumnIcon,
+  DownloadIcon,
+  FilterIcon,
+  RefreshIcon,
+  SearchIcon,
+} from "@/icons";
 
 import {
+  FilterPopOverContainerClass,
   filterContainerClass,
   filterTextClass,
   paginationNumberButtonClass,
@@ -23,6 +38,18 @@ import {
 
 const WaitList = (): React.ReactElement => {
   const [searchValue, setSearchValue] = useState<string>("");
+  const [isFilterPopOverOpen, setIsFilterPopOverOpen] =
+    useState<boolean>(false);
+  console.log(isFilterPopOverOpen, "isFilterPopOverOpen");
+
+  const renderFilterPopOver = (): React.ReactElement => (
+    <ReactPopover placement="top" offset={20}>
+      <div className={FilterPopOverContainerClass}>
+        <h1>About Us</h1>
+        <p>Lorem ipsum dolor sit amet</p>
+      </div>
+    </ReactPopover>
+  );
 
   const renderWaitListFilterSection = (): React.ReactElement => (
     <div className="flex flex-col gap-[16px] p-[12px_16px_12px_16px]">
@@ -45,14 +72,22 @@ const WaitList = (): React.ReactElement => {
       </div>
       <div className="flex items-center justify-between">
         <div>
-          <div className={filterContainerClass}>
-            <p>icon</p>
-            <p className={filterTextClass}>Add Filter</p>
-          </div>
+          <DialogTrigger isOpen={isFilterPopOverOpen}>
+            <Button className="border-none bg-transparent outline-none p-0 max-[700px]:hidden">
+              <div
+                className={filterContainerClass}
+                onClick={() => setIsFilterPopOverOpen(!isFilterPopOverOpen)}
+              >
+                <FilterIcon />
+                <p className={filterTextClass}>Add Filter</p>
+              </div>
+            </Button>
+            <ReactPopover>{renderFilterPopOver()}</ReactPopover>
+          </DialogTrigger>
         </div>
         <div className="flex items-center gap-[16px]">
           <div className={searchInputContainerClass}>
-            <p>icon</p>
+            <SearchIcon />
             <SearchField
               value={searchValue}
               onChange={setSearchValue}
@@ -61,9 +96,12 @@ const WaitList = (): React.ReactElement => {
               className="w-full"
             />
           </div>
-          <p>icon</p>
-          <p>icon</p>
-          <p>icon</p>
+          <IconButton icon={<RefreshIcon />} onClick={() => {}} />
+          <IconButton
+            icon={<ColumnIcon stroke="#334155" />}
+            onClick={() => {}}
+          />
+          <IconButton icon={<DownloadIcon />} onClick={() => {}} />
         </div>
       </div>
     </div>
@@ -81,7 +119,7 @@ const WaitList = (): React.ReactElement => {
             <p className="text-[#334155] text-[14px] font-medium font-sans">
               15
             </p>
-            <p>icon</p>
+            <ChevronsUpDown />
           </div>
           <p className="text-[14px] font-medium font-sans text-[#64748B]">
             out of <span className="text-[#18181B]">104</span>
@@ -89,7 +127,7 @@ const WaitList = (): React.ReactElement => {
         </div>
         <div className="flex items-center mr-[75px]">
           <div className={previousAndNextButtonClass}>
-            <p>icon</p>
+            <ChevronLeft />
             <p>Previous</p>
           </div>
           <div className={paginationNumberButtonClass}>
@@ -103,7 +141,7 @@ const WaitList = (): React.ReactElement => {
           </div>
           <div className={previousAndNextButtonClass}>
             <p>Next</p>
-            <p>icon</p>
+            <ChevronRight />
           </div>
         </div>
       </div>
