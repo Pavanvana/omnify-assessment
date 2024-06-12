@@ -1,12 +1,14 @@
 import React from "react";
 import cn from "classnames";
+import { observer } from "mobx-react-lite";
 import { inputClass, labelClass } from "./styles";
 import { errorMsgClass } from "./styles";
 
 interface Props {
   value: string;
   onChange: (value: string) => void;
-  placeholder?: string;
+  placeholder: string;
+  dropDownList?: any;
   label?: string;
   disabled?: boolean;
   autoFocus?: boolean;
@@ -17,7 +19,7 @@ interface Props {
   onFocus?: () => void;
 }
 
-const PasswordField = (props: Props): React.ReactElement => {
+const DropDown = (props: Props): React.ReactElement => {
   const {
     value,
     onChange,
@@ -27,21 +29,30 @@ const PasswordField = (props: Props): React.ReactElement => {
     className,
     onBlur,
     onFocus,
+    dropDownList,
   } = props;
   return (
     <div className={cn(className, "mb-4 flex flex-col")}>
       {label && <label className={labelClass}>{label}</label>}
-      <input
-        type="password"
+      <select
+        id="dropdown"
+        className={inputClass}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={inputClass}
-        placeholder={placeholder}
         onBlur={onBlur}
         onFocus={onFocus}
-      />
+      >
+        <option value="" disabled selected>
+          {placeholder}
+        </option>
+        {dropDownList.map((item: any) => (
+          <option key={item.key} value={item.key}>
+            {item.value}
+          </option>
+        ))}
+      </select>
       {errorMsg && <p className={errorMsgClass}>{errorMsg}</p>}
     </div>
   );
 };
-export default PasswordField;
+export default observer(DropDown);
