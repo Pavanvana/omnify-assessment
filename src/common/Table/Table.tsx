@@ -1,6 +1,5 @@
 import React from "react";
 import { useTable } from "react-table";
-
 import "./styles.css";
 
 interface TableProps {
@@ -27,9 +26,14 @@ const Table: React.FC<TableProps> = ({ columns, data }): React.ReactElement => {
           <tr
             {...headerGroup.getHeaderGroupProps()}
             className="w-full h-[36px]"
+            key={headerGroup.id}
           >
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()} className="p-[8px_0px_8px_16px]">
+              <th
+                {...column.getHeaderProps()}
+                className="p-[8px_0px_8px_16px]"
+                key={column.id}
+              >
                 {column.render("Header")}
               </th>
             ))}
@@ -43,6 +47,7 @@ const Table: React.FC<TableProps> = ({ columns, data }): React.ReactElement => {
             <tr
               {...row.getRowProps()}
               className="border-t border-solid border-[#EBEEF0] h-[40px] p-[16px]"
+              key={row.id}
             >
               {row.cells.map((cell) => {
                 return (
@@ -50,6 +55,7 @@ const Table: React.FC<TableProps> = ({ columns, data }): React.ReactElement => {
                     {...cell.getCellProps()}
                     className="truncate text-[12px] text-[#374151] font-medium p-[8px_0px_8px_16px]"
                     title={cell.value}
+                    key={cell.column.id}
                   >
                     {cell.render("Cell")}
                   </td>
