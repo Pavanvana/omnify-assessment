@@ -7,8 +7,6 @@ import {
   ModalOverlay,
 } from "react-aria-components";
 
-import { CloseIcon } from "../../icons";
-
 import { sidePaneCloseButtonClass } from "./styles";
 import "./styles.css";
 
