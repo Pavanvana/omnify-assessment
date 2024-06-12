@@ -1,6 +1,6 @@
 "use client";
 import cn from "classnames";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, DialogTrigger } from "react-aria-components";
 
 import SearchField from "@/common/SearchField/SearchField";
@@ -18,6 +18,9 @@ import {
   RefreshIcon,
   SearchIcon,
 } from "@/icons";
+import { tableDummyData } from "@/constants/tableConstants";
+import { TableDataTypes } from "@/types/tableTypes";
+import { observer } from "mobx-react-lite";
 
 import {
   FilterPopOverContainerClass,
@@ -46,11 +49,19 @@ interface Props {
 const WaitList = (props: Props): React.ReactElement => {
   const { isOpenSidePane } = props;
   const [searchValue, setSearchValue] = useState<string>("");
+  const [tableData, setTableData] = useState<TableDataTypes[]>(tableDummyData);
   const [isFilterPopOverOpen, setIsFilterPopOverOpen] =
     useState<boolean>(false);
   const [isRefreshButtonClicked, setIsRefreshButtonClicked] =
     useState<boolean>(false);
   const [isOpenEditColumns, setIsOpenEditColumns] = useState<boolean>(false);
+
+  useEffect(() => {
+    const filteredData = tableDummyData.filter((data) =>
+      data.payer.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setTableData(filteredData);
+  }, [searchValue]);
 
   const renderFilterPopOver = (): React.ReactElement => (
     <div className={FilterPopOverContainerClass}>
@@ -137,7 +148,7 @@ const WaitList = (props: Props): React.ReactElement => {
   const renderTable = (): React.ReactElement => (
     <div className="flex flex-col h-full">
       <div className={tableContainerClass}>
-        <WaitListTable />
+        <WaitListTable tableData={tableData} />
       </div>
       <div className={tableFooterContainer}>
         <div className="flex items-center gap-[2px]">
@@ -186,4 +197,4 @@ const WaitList = (props: Props): React.ReactElement => {
   );
 };
 
-export default WaitList;
+export default observer(WaitList);

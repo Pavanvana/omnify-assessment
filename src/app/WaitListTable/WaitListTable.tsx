@@ -2,10 +2,10 @@ import cn from "classnames";
 import { useMemo, useState } from "react";
 
 import Table from "@/common/Table/Table";
-import { WaitListStatusTypes } from "@/types/tableTypes";
+import { TableDataTypes, WaitListStatusTypes } from "@/types/tableTypes";
 import { getWaitListEnum } from "@/utils/waitListUtils";
-import { tableDummyData } from "@/constants/tableConstants";
 import { CalenderIcon, CircleDotIcon, HashIcon, UserIcon } from "@/icons";
+import { observer } from "mobx-react-lite";
 
 import {
   leadStatusDotContainerClass,
@@ -15,7 +15,12 @@ import {
 } from "./styles";
 import "./styles.css";
 
-const WaitListTable = (): React.ReactElement => {
+interface Props {
+  tableData: TableDataTypes[];
+}
+
+const WaitListTable = (props: Props): React.ReactElement => {
+  const { tableData } = props;
   const [checkedState, setCheckedState] = useState<{
     headerCheckbox: boolean;
     rowCheckboxes: number[];
@@ -28,7 +33,7 @@ const WaitListTable = (): React.ReactElement => {
     const isChecked = e.target.checked;
     setCheckedState({
       headerCheckbox: isChecked,
-      rowCheckboxes: isChecked ? tableDummyData.map((each) => each.id) : [],
+      rowCheckboxes: isChecked ? tableData.map((each) => each.id) : [],
     });
   };
 
@@ -49,7 +54,7 @@ const WaitListTable = (): React.ReactElement => {
 
       setCheckedState({
         headerCheckbox:
-          tableDummyData.length === [...checkedState.rowCheckboxes, id].length,
+          tableData.length === [...checkedState.rowCheckboxes, id].length,
         rowCheckboxes: [...checkedState.rowCheckboxes, id],
       });
     };
@@ -188,7 +193,7 @@ const WaitListTable = (): React.ReactElement => {
   );
 
   const data = useMemo(() => {
-    return tableDummyData.map((col) => {
+    return tableData.map((col) => {
       return {
         checkbox: (
           <div className="flex items-center gap-[6px] w-[20px]">
@@ -204,7 +209,7 @@ const WaitListTable = (): React.ReactElement => {
         status: getWaitListStatus(getWaitListEnum(col.status)),
       };
     });
-  }, [checkedState]);
+  }, [checkedState, tableData]);
 
   return (
     <div className="rounded-[6px] border border-solid border-[#EBEEF0] overflow-auto max-h-[460px] table-scroll">
@@ -213,4 +218,4 @@ const WaitListTable = (): React.ReactElement => {
   );
 };
 
-export default WaitListTable;
+export default observer(WaitListTable);
