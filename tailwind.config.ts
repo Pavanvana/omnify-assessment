@@ -330,8 +330,8 @@ module.exports = {
         "65vh": "65vh",
         "100vw": "100vw",
       },
-      backgroundColor: (theme) => theme("colors"),
-      backgroundOpacity: (theme) => theme("opacity"),
+      backgroundColor: (theme: any) => theme("colors"),
+      backgroundOpacity: (theme: any) => theme("opacity"),
       backgroundPosition: {
         bottom: "bottom",
         center: "center",
@@ -348,11 +348,11 @@ module.exports = {
         cover: "cover",
         contain: "contain",
       },
-      borderColor: (theme) => ({
+      borderColor: (theme: any) => ({
         ...theme("colors"),
         default: theme("colors.gray.300", "currentColor"),
       }),
-      borderOpacity: (theme) => theme("opacity"),
+      borderOpacity: (theme: any) => theme("opacity"),
       borderRadius: {
         none: "0",
         sm: "2px",
@@ -419,9 +419,9 @@ module.exports = {
       pointerEvents: {
         none: "none",
       },
-      divideColor: (theme) => theme("borderColor"),
-      divideOpacity: (theme) => theme("borderOpacity"),
-      divideWidth: (theme) => theme("borderWidth"),
+      divideColor: (theme: any) => theme("borderColor"),
+      divideOpacity: (theme: any) => theme("borderOpacity"),
+      divideWidth: (theme: any) => theme("borderWidth"),
       fill: {
         current: "currentColor",
       },
@@ -468,7 +468,7 @@ module.exports = {
         black: "900",
         extralight: "200",
       },
-      height: (theme) => ({
+      height: (theme: any) => ({
         auto: "auto",
         ...theme("spacing"),
         full: "100%",
@@ -520,12 +520,12 @@ module.exports = {
         disc: "disc",
         decimal: "decimal",
       },
-      margin: (theme, { negative }) => ({
+      margin: (theme: any, { negative }: any) => ({
         auto: "auto",
         ...theme("spacing"),
         ...negative(theme("spacing")),
       }),
-      maxHeight: (theme) => ({
+      maxHeight: (theme: any) => ({
         ...theme("spacing"),
         full: "100%",
         screen: "100vh",
@@ -542,7 +542,7 @@ module.exports = {
         "530px": "530px",
         "60vh": "60vh",
       }),
-      maxWidth: (theme, { breakpoints }) => ({
+      maxWidth: (theme: any, { breakpoints }: any) => ({
         unset: "unset",
         none: "none",
         xs: "320px",
@@ -594,7 +594,6 @@ module.exports = {
         "314px": "314px",
         "196px": "196px",
         "74px": "74px",
-        "78px": "78px",
         "182px": "182px",
       },
       objectPosition: {
@@ -635,10 +634,10 @@ module.exports = {
         11: "11",
         12: "12",
       },
-      padding: (theme) => theme("spacing"),
-      placeholderColor: (theme) => theme("colors"),
-      placeholderOpacity: (theme) => theme("opacity"),
-      space: (theme, { negative }) => ({
+      padding: (theme: any) => theme("spacing"),
+      placeholderColor: (theme: any) => theme("colors"),
+      placeholderOpacity: (theme: any) => theme("opacity"),
+      space: (theme: any, { negative }: any) => ({
         ...theme("spacing"),
         ...negative(theme("spacing")),
       }),
@@ -650,9 +649,9 @@ module.exports = {
         1: "1",
         2: "2",
       },
-      textColor: (theme) => theme("colors"),
-      textOpacity: (theme) => theme("opacity"),
-      width: (theme) => ({
+      textColor: (theme: any) => theme("colors"),
+      textOpacity: (theme: any) => theme("opacity"),
+      width: (theme: any) => ({
         auto: "auto",
         ...theme("spacing"),
         "1/2": "50%",
@@ -740,7 +739,7 @@ module.exports = {
         c19: "19",
         c20: "20",
       },
-      gap: (theme) => theme("spacing"),
+      gap: (theme: any) => theme("spacing"),
       gridTemplateColumns: {
         none: "none",
         1: "repeat(1, minmax(0, 1fr))",
@@ -873,7 +872,7 @@ module.exports = {
         90: "90deg",
         180: "180deg",
       },
-      translate: (theme, { negative }) => ({
+      translate: (theme: any, { negative }: any) => ({
         ...theme("spacing"),
         ...negative(theme("spacing")),
         "-full": "-100%",
