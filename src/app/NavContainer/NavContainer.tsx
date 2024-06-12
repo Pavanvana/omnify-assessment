@@ -38,7 +38,6 @@ interface Props {
   isOpenSidePane: boolean;
 }
 
-//FIXME: Update icons
 const NavContainer = (props: Props): React.ReactElement => {
   const { isOpenSidePane, activeNavItem, setActiveNavItem } = props;
   const [locationName, setLocationName] = useState<string>("");
@@ -76,7 +75,7 @@ const NavContainer = (props: Props): React.ReactElement => {
         <div className="w-[48px] h-[56px] z-10 flex flex-row items-center justify-center rounded-[6px] border-b border-solid border-[#E2E8F0] bg-[#FFF] shadow-custom focus-within:ring-2 focus-within:ring-blue-100">
           <ArrowLeftRight />
         </div>
-        <div className="w-[29px] h-[30px] relative top-[-3px] rounded-[4px] bg-[#F1F5F9] border border-solid border-[#E2E8F0]">
+        <div className="flex items-center justify-center w-[29px] h-[30px] relative top-[-3px] rounded-[4px] bg-[#F1F5F9] border border-solid border-[#E2E8F0]">
           <GlobeIcon height={13} width={13} fill="#64748B" />
         </div>
       </div>
@@ -90,7 +89,8 @@ const NavContainer = (props: Props): React.ReactElement => {
         <div
           className={cn(
             navItemClass,
-            activeNavItem === sideBarNavItemsTypes.ORDERS && activeNavItemClass
+            activeNavItem === sideBarNavItemsTypes.ORDERS && activeNavItemClass,
+            { "flex items-center justify-center": !isOpenSidePane }
           )}
           onClick={() => setActiveNavItem(sideBarNavItemsTypes.ORDERS)}
         >
@@ -101,7 +101,8 @@ const NavContainer = (props: Props): React.ReactElement => {
           className={cn(
             navItemClass,
             activeNavItem === sideBarNavItemsTypes.SUBSCRIPTIONS &&
-              activeNavItemClass
+              activeNavItemClass,
+            { "flex items-center justify-center": !isOpenSidePane }
           )}
           onClick={() => setActiveNavItem(sideBarNavItemsTypes.SUBSCRIPTIONS)}
         >
@@ -112,7 +113,8 @@ const NavContainer = (props: Props): React.ReactElement => {
           className={cn(
             navItemClass,
             activeNavItem === sideBarNavItemsTypes.CALENDAR &&
-              activeNavItemClass
+              activeNavItemClass,
+            { "flex items-center justify-center": !isOpenSidePane }
           )}
           onClick={() => setActiveNavItem(sideBarNavItemsTypes.CALENDAR)}
         >
@@ -123,7 +125,8 @@ const NavContainer = (props: Props): React.ReactElement => {
           className={cn(
             navItemClass,
             activeNavItem === sideBarNavItemsTypes.WAITLIST &&
-              activeNavItemClass
+              activeNavItemClass,
+            { "flex items-center justify-center": !isOpenSidePane }
           )}
           onClick={() => setActiveNavItem(sideBarNavItemsTypes.WAITLIST)}
         >
@@ -139,7 +142,7 @@ const NavContainer = (props: Props): React.ReactElement => {
       <Link href={"/dashboard"}>
         <div
           className={cn(dashboardNavItemContainerClass, {
-            "w-[48px]": !isOpenSidePane,
+            "w-[48px] !justify-center": !isOpenSidePane,
           })}
         >
           {isOpenSidePane && (

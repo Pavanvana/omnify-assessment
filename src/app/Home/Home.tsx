@@ -11,6 +11,7 @@ const Home = (): React.ReactElement => {
   const [activeNavItem, setActiveNavItem] = useState(
     sideBarNavItemsTypes.WAITLIST
   );
+  const [isOpenSidePane, setIsOpenSidePane] = useState(true);
 
   const renderBody = (): React.ReactElement => {
     switch (activeNavItem) {
@@ -21,7 +22,7 @@ const Home = (): React.ReactElement => {
       case sideBarNavItemsTypes.SUBSCRIPTIONS:
         return <Subscriptions />;
       case sideBarNavItemsTypes.WAITLIST:
-        return <WaitList />;
+        return <WaitList isOpenSidePane={isOpenSidePane} />;
     }
   };
 
@@ -30,6 +31,8 @@ const Home = (): React.ReactElement => {
       <SideBar
         activeNavItem={activeNavItem}
         setActiveNavItem={setActiveNavItem}
+        isOpenSidePane={isOpenSidePane}
+        setIsOpenSidePane={setIsOpenSidePane}
       />
       <div className="w-full h-full p-[10px]">{renderBody()}</div>
     </div>

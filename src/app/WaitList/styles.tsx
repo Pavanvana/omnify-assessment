@@ -41,4 +41,7 @@ export const paginationNumberClass =
   "font-sans font-medium text-[14px] text-[#334155]";
 
 export const FilterPopOverContainerClass =
-  "w-[612px] h-[400px] bg-white rounded-[6px] shadow-custom-sm";
+  "w-[612px] h-[400px] bg-white rounded-[6px]";
+
+export const popOverClass =
+  "outline-none shadow-lg rounded-[8px] relative left-[39.2%]";

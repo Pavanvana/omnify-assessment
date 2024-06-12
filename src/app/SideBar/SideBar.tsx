@@ -29,10 +29,12 @@ import {
 interface Props {
   activeNavItem: sideBarNavItemsTypes;
   setActiveNavItem: (activeNavItem: sideBarNavItemsTypes) => void;
+  isOpenSidePane: boolean;
+  setIsOpenSidePane: (isOpenSidePane: boolean) => void;
 }
 const SideBar = (props: Props): React.ReactElement => {
-  const { activeNavItem, setActiveNavItem } = props;
-  const [isOpenSidePane, setIsOpenSidePane] = useState(true);
+  const { activeNavItem, setActiveNavItem, isOpenSidePane, setIsOpenSidePane } =
+    props;
 
   const renderHelpCenterAndProfile = (): React.ReactElement => {
     return (
@@ -66,7 +68,11 @@ const SideBar = (props: Props): React.ReactElement => {
             </>
           )}
         </div>
-        <div className={helpCenterContainerClass}>
+        <div
+          className={cn(helpCenterContainerClass, {
+            "justify-center": !isOpenSidePane,
+          })}
+        >
           <HelpCircleIcon />
           {isOpenSidePane && (
             <div className="flex flex-col ml-[8px]">

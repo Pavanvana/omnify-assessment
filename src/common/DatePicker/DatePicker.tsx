@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
-import { inputClass, labelClass } from "./styles";
-import { errorMsgClass } from "./styles";
+
+import { inputClass, labelClass, errorMsgClass } from "./styles";
 
 interface Props {
   value: string;
@@ -32,11 +32,11 @@ const PasswordField = (props: Props): React.ReactElement => {
     <div className={cn(className, "mb-4 flex flex-col")}>
       {label && <label className={labelClass}>{label}</label>}
       <input
-        type="password"
+        type="date"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={inputClass}
-        placeholder={placeholder}
+        data-placeholder="MM/DD/YYYY"
         onBlur={onBlur}
         onFocus={onFocus}
       />

@@ -45,3 +45,5 @@ export { ChevronsUpDown } from "./ChevronsUpDown/ChevronsUpDown";
 export { ChevronLeft } from "./ChevronLeft/ChevronLeft";
 
 export { ChevronRight } from "./ChevronRight/ChevronRight";
+
+export { UsersIcon } from "./UsersIcon/UsersIcon";
